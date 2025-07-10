@@ -15,16 +15,15 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // *IMPLEMENTENTADO*
+            if (Suite.Capacidade >= hospedes.Count)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                // *IMPLEMENTENTADO*
+                throw new Exception("Não é possivel reservar! Capacidade do quarto é menor ao número de hóspedes");
             }
         }
 
@@ -35,26 +34,31 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            // *IMPLEMENTADO*
+            
+                return Hospedes.Count;
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+          
+            // *IMPLEMENTADO*
 
+            decimal valor = DiasReservados * Suite.ValorDiaria;
+            decimal valorComPercentual;
+            decimal valorTotalComDesconto;
             // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
             // *IMPLEMENTE AQUI*
-            if (true)
+            if (DiasReservados >= 10)
             {
-                valor = 0;
+                valorComPercentual = valor * 10 / 100;
+                valorTotalComDesconto = valor - valorComPercentual;
+                return valorTotalComDesconto;
             }
 
             return valor;
+
+            
         }
     }
 }
